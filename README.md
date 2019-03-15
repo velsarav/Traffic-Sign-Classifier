@@ -1,5 +1,4 @@
 # **Traffic Sign Classifier** 
-
 [![Udacity - Self-Driving Car NanoDegree](https://s3.amazonaws.com/udacity-sdc/github/shield-carnd.svg)](http://www.udacity.com/drive)
 ---
 
@@ -28,12 +27,11 @@ The goals / steps of this project are the following:
 [image10]: ./traffic_signs_samples/image6.jpg "Traffic Sign 6"
 
 ## Rubric Points
-### Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/481/view) individually and describe how I addressed each point in my implementation.  
+### The [rubric points](https://review.udacity.com/#!/rubrics/481/view) were individually addressed in the implementation and described in [code](https://github.com/velsarav/Traffic-Sign-Classifier/blob/master/Traffic_sign_classifier.ipynb) and [documentation](https://github.com/velsarav/Traffic-Sign-Classifier/blob/master/Traffic_sign_classifier.html).  
 
 ---
 ### README
-
-You're reading it! and here is a link to my [project code](https://github.com/velsarav/Traffic-Sign-Classifier/Traffic_sign_classifier.ipynb)
+Link to my [project code](https://github.com/velsarav/Traffic-Sign-Classifier/blob/master/Traffic_sign_classifier.ipynb)
 
 ### Data Set Summary & Exploration
 
@@ -49,15 +47,19 @@ Following are the summary statistics of the traffic signs data set:
 Visualizing the data will give better idea
 
 Random traffic signs used for the training
+
 ![alt text][image1]
 
 Following bar charts shows the distribution of classes in training set
+
 ![alt text][image2]
 
 Scatter plot shows the classification in training set
+
 ![alt text][image3]
 
 Sign name vs number of training samples
+
 ![alt text][image4]
 
 * Number of classes with low images is 21
@@ -132,7 +134,7 @@ Final model results were:
 
 - The final accuracy of the test set is 85%. 
 - In order to estimate how well the model has been trained look at the validation accuracy and in the 15 epochs is 95%. 
-- The training accuracy is comparable with the validation accuracy and it is 95%
+- The training accuracy is comparable with the validation accuracy.
  
 
 ### Test a Model on New Images
@@ -166,7 +168,7 @@ The model was able to correctly guess 4 of the 6 traffic signs, which gives an a
 `tf.nn.top_k` will return the values and indices (class ids) of the top k predictions. So if k=3, for each sign, it'll return the 3 largest probabilities (out of a possible 43) and the corresponding class ids.
 
 
-Top 5 Predictions:
+```Top 5 Predictions:
  [[  7.02557743e-01   2.77594298e-01   9.58556961e-03   9.50097386e-03
     5.65160590e-04]
  [  1.00000000e+00   2.17199123e-11   8.45876646e-13   1.51215802e-19
@@ -178,14 +180,15 @@ Top 5 Predictions:
  [  9.99979019e-01   8.80109383e-06   7.45183888e-06   2.70462533e-06
     1.84102362e-06]
  [  1.00000000e+00   4.92508923e-09   2.93137359e-09   2.18161333e-09
-    2.70837269e-10]]
-Top 5 Labels:
+    2.70837269e-10]]```
+
+```Top 5 Labels:
  [[22 18 24 25 26]
  [ 9 35 10 16 13]
  [ 0  1  4  8 14]
  [18 25 26 11 27]
  [14  2 38  1  4]
- [12 15  1 13 26]]
+ [12 15  1 13 26]]```
 
 
 
