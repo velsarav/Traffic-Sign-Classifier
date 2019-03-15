@@ -191,4 +191,7 @@ The model was able to correctly guess 4 of the 6 traffic signs, which gives an a
  [12 15  1 13 26]]```
 
 
-
+## Reference
+* [Model Architecture](https://github.com/aruizga7/Self-Driving-Car-in-DSX/blob/master/3.%20Traffic%20Sign%20Recognition/3%20-%20Traffic%20Sign%20Classifier.ipynb)
+* [Test Model](https://github.com/olpotkin/CarND-Traffic-Sign-Classifier/blob/master/Traffic_Sign_Classifier.ipynb)
+* [Data Visualization](https://github.com/lfiaschi/udacity-traffic-sign-classifier/blob/master/Traffic_Sign_Classifier.ipynb)
