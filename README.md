@@ -1,58 +1,191 @@
-## Project: Build a Traffic Sign Recognition Program
+# **Traffic Sign Classifier** 
+
 [![Udacity - Self-Driving Car NanoDegree](https://s3.amazonaws.com/udacity-sdc/github/shield-carnd.svg)](http://www.udacity.com/drive)
-
-Overview
 ---
-In this project, you will use what you've learned about deep neural networks and convolutional neural networks to classify traffic signs. You will train and validate a model so it can classify traffic sign images using the [German Traffic Sign Dataset](http://benchmark.ini.rub.de/?section=gtsrb&subsection=dataset). After the model is trained, you will then try out your model on images of German traffic signs that you find on the web.
 
-We have included an Ipython notebook that contains further instructions 
-and starter code. Be sure to download the [Ipython notebook](https://github.com/udacity/CarND-Traffic-Sign-Classifier-Project/blob/master/Traffic_Sign_Classifier.ipynb). 
+**Build a Traffic Sign Recognition Project**
 
-We also want you to create a detailed writeup of the project. Check out the [writeup template](https://github.com/udacity/CarND-Traffic-Sign-Classifier-Project/blob/master/writeup_template.md) for this project and use it as a starting point for creating your own writeup. The writeup can be either a markdown file or a pdf document.
-
-To meet specifications, the project will require submitting three files: 
-* the Ipython notebook with the code
-* the code exported as an html file
-* a writeup report either as a markdown or pdf file 
-
-Creating a Great Writeup
----
-A great writeup should include the [rubric points](https://review.udacity.com/#!/rubrics/481/view) as well as your description of how you addressed each point.  You should include a detailed description of the code used in each step (with line-number references and code snippets where necessary), and links to other supporting documents or external references.  You should include images in your writeup to demonstrate how your code works with examples.  
-
-All that said, please be concise!  We're not looking for you to write a book here, just a brief description of how you passed each rubric point, and references to the relevant code :). 
-
-You're not required to use markdown for your writeup.  If you use another method please just submit a pdf of your writeup.
-
-The Project
----
 The goals / steps of this project are the following:
-* Load the data set
+* Load the data set (see below for links to the project data set)
 * Explore, summarize and visualize the data set
 * Design, train and test a model architecture
 * Use the model to make predictions on new images
 * Analyze the softmax probabilities of the new images
 * Summarize the results with a written report
 
-### Dependencies
-This lab requires:
 
-* [CarND Term1 Starter Kit](https://github.com/udacity/CarND-Term1-Starter-Kit)
+[//]: # (Image References)
 
-The lab environment can be created with CarND Term1 Starter Kit. Click [here](https://github.com/udacity/CarND-Term1-Starter-Kit/blob/master/README.md) for the details.
+[image1]: ./Writeup/dataset_summary.png "dataset_summary"
+[image2]: ./Writeup/class_distribution.png "Distribution"
+[image3]: ./Writeup/class_scatter.png "Scatter"
+[image4]: ./Writeup/class_histogram.png "Sign Name"
+[image5]: ./traffic_signs_samples/image1.jpg "Traffic Sign 1"
+[image6]: ./traffic_signs_samples/image2.jpg "Traffic Sign 2"
+[image7]: ./traffic_signs_samples/image3.jpg "Traffic Sign 3"
+[image8]: ./traffic_signs_samples/image4.jpg "Traffic Sign 4"
+[image9]: ./traffic_signs_samples/image5.jpg "Traffic Sign 5"
+[image10]: ./traffic_signs_samples/image6.jpg "Traffic Sign 6"
 
-### Dataset and Repository
+## Rubric Points
+### Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/481/view) individually and describe how I addressed each point in my implementation.  
 
-1. Download the data set. The classroom has a link to the data set in the "Project Instructions" content. This is a pickled dataset in which we've already resized the images to 32x32. It contains a training, validation and test set.
-2. Clone the project, which contains the Ipython notebook and the writeup template.
-```sh
-git clone https://github.com/udacity/CarND-Traffic-Sign-Classifier-Project
-cd CarND-Traffic-Sign-Classifier-Project
-jupyter notebook Traffic_Sign_Classifier.ipynb
-```
+---
+### README
 
-### Requirements for Submission
-Follow the instructions in the `Traffic_Sign_Classifier.ipynb` notebook and write the project report using the writeup template as a guide, `writeup_template.md`. Submit the project code and writeup document.
+You're reading it! and here is a link to my [project code](https://github.com/velsarav/Traffic-Sign-Classifier/Traffic_sign_classifier.ipynb)
 
-## How to write a README
-A well written README file can enhance your project and portfolio.  Develop your abilities to create professional README files by completing [this free course](https://www.udacity.com/course/writing-readmes--ud777).
+### Data Set Summary & Exploration
+
+Following are the summary statistics of the traffic signs data set:
+
+
+* Number of training examples = 34799
+* Number of testing examples = 12630
+* Number of classes = 43
+
+#### Visualization of the dataset
+
+Visualizing the data will give better idea
+
+Random traffic signs used for the training
+![alt text][image1]
+
+Following bar charts shows the distribution of classes in training set
+![alt text][image2]
+
+Scatter plot shows the classification in training set
+![alt text][image3]
+
+Sign name vs number of training samples
+![alt text][image4]
+
+* Number of classes with low images is 21
+* Total low images is 6060
+
+### Design and Test a Model Architecture
+
+#### Pre-Process the Data set
+
+
+1.  Apply normalization filter (cv.NORM_MINMAX) for all datasets.
+2.  Apply grayscale filter for all datasets.
+3.  Shuffle the training data.
+
+The data is divided into training set and validation set, which is generated by train_test_split function of sklearn, where the training set is 80% and the verification set is 20%. Randomly split the training data into training set and validation set for cross validation of the model
+
+
+#### Model Architecture
+
+A CNN consists of a succession of convolutional and maxpooling layers, and each layer only receives connections from its previous layer. The last layer is a fully connected layer with one ouput unit per class in the recognition task.
+
+| Layer         		|     Description	        					| 
+|:---------------------:|:---------------------------------------------:| 
+| Input         		| 32x32x1 grayscale image   					| 
+| Convolution 5x5     	| 1x1 stride, same padding, outputs 28x28x6 	|
+| RELU					|												|
+| Max pooling	      	| 2x2 stride, outputs 14x14x6  				    |
+| Convolution 5x5	    | 1x1 stride, outputs 10x10x16        		    |
+| Max pooling	      	| 2x2 stride, outputs 5x5x16  				    |
+| Flatten               | outputs 400                                   |
+| Fully connected		| output = 120     								|
+| RELU					|												|
+| Fully connected		| output = 84     								|
+| RELU					|												|
+| Fully connected		| output = 43     								|
+
+#### Train the model
+| Parameter         	                |     Description	        					| 
+|:-------------------------------------:|:---------------------------------------------:| 
+| EPOCH         		                | 15 					                        | 
+| BATCH_SIZE         	                | 128 					                        | 
+| Hyperparameter learning rate         	| 0.01 					                        |
+
+- Shuffle the data in order to avoid the biases due to the position of the images.
+- Break training data into batches and train the model on each batch
+- At the end of each epoch evaluate the model on our validation data.
+- Adam optimizer is used to minimize the loss function is a stochastic gradient descend (SGD) algorithm, estimate the loss over small subset of data (batches).
+- BATCH_SIZE for a total of 218 iteration to complete an epoch.
+- Set the value of hyperparameter learning rate.
+- Apply one-hot encoding for training
+- cross entropy as loss function.
+
+#### Validate and Test the Model
+
+
+A validation set can be used to assess how well the model is performing. A low accuracy on the training and validation sets imply under-fitting. A high accuracy on the training set but low accuracy on the validation set implies over-fitting.
+
+Final model results were:
+* Training set accuracy of 0.974
+* Validation set accuracy of 0.949
+* Test set accuracy of 0.856
+
+
+- The architecture is used to resolve the problem of image classification using LeNet-5 architecture a Convolutional Neural Network. 
+- The activation function used is ReLu function. 
+- dropout layer was added in order to avoid over-fitting. 
+- Tuned mu and sigma to 0 and 0.075 respectively.
+- Adapt the shape of weight and bias vector in each layer. 
+- Reshape the input image to make dimensionally consistent with weight matrix. 
+- Set the final filter depth to 43. 
+- Tried different learning rate and found that 0.01 work well.
+
+- The final accuracy of the test set is 85%. 
+- In order to estimate how well the model has been trained look at the validation accuracy and in the 15 epochs is 95%. 
+- The training accuracy is comparable with the validation accuracy and it is 95%
+ 
+
+### Test a Model on New Images
+
+#### German traffic signs found on the web 
+Here are six German traffic signs found on the web:
+
+![alt text][image5] ![alt text][image6] ![alt text][image7] 
+![alt text][image8] ![alt text][image9] ![alt text][image10]
+
+The first image of class *General Caution* and 4th image of class *Traffic signal* looks similar as a straight line only difference is color, will discuss more about the prediction below.
+
+#### Model's predictions on these new traffic signs
+Here are the results of the prediction:
+
+| Image			        |     Prediction	        					| 
+|:---------------------:|:---------------------------------------------:| 
+| General caution      		| Bumpy road				| 
+| No passing    			| No passing 										|
+| Speed limit (20km/h)				| Speed limit (20km/h)											|
+| Traffic signals	      		| General caution					 				|
+| Stop			| Stop      							|
+|Priority road		| Priority road				|
+
+
+The model was able to correctly guess 4 of the 6 traffic signs, which gives an accuracy of 66%. The interesting part is both General caution and Traffic signals was predicted wrongly.
+
+#### Softmax probabilities for each prediction.
+
+
+`tf.nn.top_k` will return the values and indices (class ids) of the top k predictions. So if k=3, for each sign, it'll return the 3 largest probabilities (out of a possible 43) and the corresponding class ids.
+
+
+Top 5 Predictions:
+ [[  7.02557743e-01   2.77594298e-01   9.58556961e-03   9.50097386e-03
+    5.65160590e-04]
+ [  1.00000000e+00   2.17199123e-11   8.45876646e-13   1.51215802e-19
+    2.04509420e-20]
+ [  9.78558660e-01   2.12668777e-02   1.74529443e-04   1.30645961e-12
+    6.64712968e-14]
+ [  9.99995708e-01   2.45366869e-06   1.71364729e-06   5.79551909e-08
+    2.69919482e-08]
+ [  9.99979019e-01   8.80109383e-06   7.45183888e-06   2.70462533e-06
+    1.84102362e-06]
+ [  1.00000000e+00   4.92508923e-09   2.93137359e-09   2.18161333e-09
+    2.70837269e-10]]
+Top 5 Labels:
+ [[22 18 24 25 26]
+ [ 9 35 10 16 13]
+ [ 0  1  4  8 14]
+ [18 25 26 11 27]
+ [14  2 38  1  4]
+ [12 15  1 13 26]]
+
+
 
