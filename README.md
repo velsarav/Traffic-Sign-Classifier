@@ -30,9 +30,6 @@ The goals / steps of this project are the following:
 ### The [rubric points](https://review.udacity.com/#!/rubrics/481/view) were individually addressed in the implementation and described in [code](https://github.com/velsarav/Traffic-Sign-Classifier/blob/master/Traffic_sign_classifier.ipynb) and [documentation](https://github.com/velsarav/Traffic-Sign-Classifier/blob/master/Traffic_sign_classifier.html).  
 
 ---
-### README
-Link to my [project code](https://github.com/velsarav/Traffic-Sign-Classifier/blob/master/Traffic_sign_classifier.ipynb)
-
 ### Data Set Summary & Exploration
 
 Following are the summary statistics of the traffic signs data set:
@@ -168,7 +165,8 @@ The model was able to correctly guess 4 of the 6 traffic signs, which gives an a
 `tf.nn.top_k` will return the values and indices (class ids) of the top k predictions. So if k=3, for each sign, it'll return the 3 largest probabilities (out of a possible 43) and the corresponding class ids.
 
 
-```Top 5 Predictions:
+```
+Top 5 Predictions:
  [[  7.02557743e-01   2.77594298e-01   9.58556961e-03   9.50097386e-03
     5.65160590e-04]
  [  1.00000000e+00   2.17199123e-11   8.45876646e-13   1.51215802e-19
@@ -180,18 +178,20 @@ The model was able to correctly guess 4 of the 6 traffic signs, which gives an a
  [  9.99979019e-01   8.80109383e-06   7.45183888e-06   2.70462533e-06
     1.84102362e-06]
  [  1.00000000e+00   4.92508923e-09   2.93137359e-09   2.18161333e-09
-    2.70837269e-10]]```
+    2.70837269e-10]]
 
-```Top 5 Labels:
+Top 5 Labels:
  [[22 18 24 25 26]
  [ 9 35 10 16 13]
  [ 0  1  4  8 14]
  [18 25 26 11 27]
  [14  2 38  1  4]
- [12 15  1 13 26]]```
+ [12 15  1 13 26]]
+ ```
 
 
 ## Reference
-* [Model Architecture](https://github.com/aruizga7/Self-Driving-Car-in-DSX/blob/master/3.%20Traffic%20Sign%20Recognition/3%20-%20Traffic%20Sign%20Classifier.ipynb)
-* [Test Model](https://github.com/olpotkin/CarND-Traffic-Sign-Classifier/blob/master/Traffic_Sign_Classifier.ipynb)
-* [Data Visualization](https://github.com/lfiaschi/udacity-traffic-sign-classifier/blob/master/Traffic_Sign_Classifier.ipynb)
+
+- [Model Architecture](https://github.com/aruizga7/Self-Driving-Car-in-DSX/blob/master/3.%20Traffic%20Sign%20Recognition/3%20-%20Traffic%20Sign%20Classifier.ipynb) 
+- [Test Model](https://github.com/olpotkin/CarND-Traffic-Sign-Classifier/blob/master/Traffic_Sign_Classifier.ipynb)
+- [Data Visualization](https://github.com/lfiaschi/udacity-traffic-sign-classifier/blob/master/Traffic_Sign_Classifier.ipynb)
